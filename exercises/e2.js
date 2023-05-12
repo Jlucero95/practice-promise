@@ -35,18 +35,11 @@ export const getPromise = (bool) => {
  */
 
 export const handlePromise = (promise) => {
-	return new Promise((res, rej) => {
-		if (!rej === res) {
-			rej("Uh Oh");
-		} else {
-			res(promise);
-		}
-	});
+	return promise.then(
+		() => promise,
+		() => "Uh Oh"
+	);
 };
-
-handlePromise()
-	.then((data) => console.log(data))
-	.catch((err) => console.log(err));
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-2"
