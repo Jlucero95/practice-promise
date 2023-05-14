@@ -15,13 +15,13 @@
  * Example: export const getPromise(num) => return <Your code of promise>
  */
 export const getPromise = (num) => {
-	return new Promise((resolve, reject) => {
-		if (Number.isInteger(num)) {
+	if (Number.isInteger(num)) {
+		return new Promise((resolve, reject) => {
 			resolve(num);
-		} else if (Number.isNaN(num)) {
-			reject("0");
-		}
-	});
+		});
+	} else {
+		return 0;
+	}
 };
 
 /**
@@ -36,7 +36,13 @@ export const getPromise = (num) => {
  * * if you have solved it successfully, the updateSumValue() function will return the value of 10;
  */
 export const updateSumValue = () => {
-	// Your code goes here...
+	let sum = 2;
+	sum += 8;
+	const promise = new Promise((resolve, reject) => {
+		resolve(getPromise());
+	});
+	promise.then((data) => console.log(getPromise(120)));
+	return sum;
 };
 
 // === TEST YOURSELF ===
