@@ -15,8 +15,8 @@ consumed under a single abstraction:
 
 ```js
 doSomeSetup()
-  .then((id) => cache.fetchModel(id) || promisedAjax("users/" + id))
-  .then((data) => displayUser(data))
+	.then((id) => cache.fetchModel(id) || promisedAjax("users/" + id))
+	.then((data) => displayUser(data));
 ```
 
 The key thing to understand here is that your handlers will **wrap** your
