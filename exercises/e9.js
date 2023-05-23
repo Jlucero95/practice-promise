@@ -3,6 +3,8 @@
  * Please, make sure to read the "09 An-important-rule.md" file in exercises-info folder
  */
 
+import { it } from "vitest";
+
 /**
  * @task
  * Create a function `iterate` that prints the first function argument
@@ -65,7 +67,20 @@ export function onReject(obj) {
  */
 
 // Your code goes here...
-export const promise = () => {};
+
+export const promise = Promise.resolve()
+	.then(() => console.log(iterate(0)))
+	.then(() => console.log(iterate(1)))
+	.then(() => console.log(iterate(2)))
+	.then(() => console.log(iterate(3)))
+	.then(() => console.log(iterate(4)))
+	.then(() => console.log(alwaysThrows()))
+	.then(() => console.log(iterate(5)))
+	.then(() => console.log(iterate(6)))
+	.then(() => console.log(iterate(7)))
+	.then(() => console.log(iterate(8)))
+	.then(() => console.log(iterate(9)))
+	.catch((err) => console.log(onReject(err)));
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-9"
