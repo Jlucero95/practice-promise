@@ -14,6 +14,8 @@
 */
 
 export const usersUrl = 'http://localhost:3000/users/';
+import fetch from "node-fetch";
+fetch(usersUrl)
 
 /**
  * @task
@@ -27,8 +29,7 @@ export const usersUrl = 'http://localhost:3000/users/';
 */
 
 const getLoginList = () => {
-  // Your code goes here...
-
+  
 }
 
 /**
