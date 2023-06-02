@@ -59,15 +59,9 @@ export const result3 = Promise.allSettled(promiseArr).then((results) =>
  * Example: export const newPromiseArr = promiseArr.<method>()...
  */
 
-export const newPromiseArr = promiseArr
-	.filter(
-		(promise) =>
-			new Promise((resolve, reject) => {
-				promise.then(resolve).catch(reject);
-			})
-	)
-	.slice(0, 1)
-	.reverse();
+export const newPromiseArr = promiseArr.filter(
+	(promise) => promise !== promise2 && promise !== promise3
+);
 
 // Do NOT refactor or update result 4, it's all set to work
 export const result4 = Promise.race(newPromiseArr)

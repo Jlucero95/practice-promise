@@ -29,9 +29,7 @@ const fetchUrl = fetch(usersUrl);
  */
 
 const getLoginList = (data) => {
-	let newArr = [];
-	data.map((log) => newArr.push(log.login));
-	console.log(newArr);
+	return data.map((log) => log.login);
 };
 
 /**
@@ -58,7 +56,10 @@ const getData = fetchUrl;
 // Your code goes here ...
 export const result = getData
 	.then((response) => response.json())
-	.then((data) => getLoginList(data))
+	.then((data) => {
+		console.log(getLoginList(data));
+		return getLoginList(data);
+	})
 	.catch((err) => err);
 
 // === TEST YOURSELF ===
