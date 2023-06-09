@@ -21,9 +21,11 @@ export const attachTitle = (arg) => {
  */
 
 export const getPromise = () => {
-	return new Promise((resolve, reject) => {
-		resolve(attachTitle("MANHATTAN"));
-	});
+	return new Promise((resolve) => {
+		resolve("MANHATTAN");
+	})
+		.then((val) => attachTitle(val))
+		.then((val) => console.log(val));
 };
 
 // === TEST YOURSELF ===

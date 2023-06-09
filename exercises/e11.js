@@ -29,6 +29,7 @@ const fetchUrl = fetch(usersUrl);
  */
 
 const getLoginList = (data) => {
+	console.log(data.map((log) => log.login));
 	return data.map((log) => log.login);
 };
 
@@ -60,7 +61,7 @@ export const result = getData
 		console.log(getLoginList(data));
 		return getLoginList(data);
 	})
-	.catch((err) => err);
+	.catch((err) => console.log(err));
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-11"

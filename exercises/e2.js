@@ -36,7 +36,7 @@ export const getPromise = (bool) => {
 
 export const handlePromise = (promise) => {
 	return promise.then(
-		() => promise,
+		(prom) => prom,
 		() => "Uh Oh"
 	);
 };

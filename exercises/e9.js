@@ -13,9 +13,8 @@ import { it } from "vitest";
  */
 
 export function iterate(arg) {
-	const addOne = +arg + 1;
 	console.log(arg);
-	return addOne;
+	return arg + 1;
 }
 
 /**
@@ -38,7 +37,7 @@ export function alwaysThrows() {
  */
 
 export function onReject(obj) {
-	if (typeof obj == "object") {
+	if (obj.message) {
 		console.log(obj.message);
 	} else {
 		console.log(obj);
@@ -68,19 +67,18 @@ export function onReject(obj) {
 
 // Your code goes here...
 
-export const promise = Promise.resolve()
-	.then(() => console.log(iterate(1)))
-	.then(() => console.log(iterate(2)))
-	.then(() => console.log(iterate(3)))
-	.then(() => console.log(iterate(4)))
-	.then(() => console.log(iterate(5)))
-	.then(() => console.log(alwaysThrows()))
-	.then(() => console.log(iterate(6)))
-	.then(() => console.log(iterate(7)))
-	.then(() => console.log(iterate(8)))
-	.then(() => console.log(iterate(9)))
-	.then(() => console.log(iterate(10)))
-	.catch((err) => console.log(err));
+export const promise = Promise.resolve(iterate(1))
+	.then((val) => iterate(val))
+	.then((val) => iterate(val))
+	.then((val) => iterate(val))
+	.then((val) => iterate(val))
+	.then(alwaysThrows)
+	.then((val) => iterate(val))
+	.then((val) => iterate(val))
+	.then((val) => iterate(val))
+	.then((val) => iterate(val))
+	.then((val) => iterate(val))
+	.catch(onReject);
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-9"

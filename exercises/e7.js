@@ -21,13 +21,10 @@
 
 export function parsePromised(json) {
 	return new Promise((resolve, reject) => {
-		let parsed = JSON.parse(json);
 		try {
-			if (parsed) {
-				resolve(parsed);
-			}
-		} catch {
-			return false;
+			resolve(JSON.parse(json));
+		} catch (e) {
+			reject(e);
 		}
 	});
 }
@@ -56,7 +53,15 @@ export function onReject(err) {
  */
 
 export const handlePromise = (prom) => {
-	return prom.then(() => prom).catch((err) => onReject(err));
+	return prom
+		.then((val) => val)
+		.catch((err) => {
+			if (err.message) {
+				return onReject(err);
+			} else {
+				return err;
+			}
+		});
 };
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-7"
